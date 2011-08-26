@@ -115,7 +115,6 @@ up() {
     cd $d
 }
 
-
 function parse_git_branch {
     if [ -d .git ]
     then
@@ -152,23 +151,33 @@ bu() {
 
 
 # Command prompt configs --------------------------------------------- 
-# PS1="\n[\u@\h]: \w\n$?>"
+# \d = the date in "Weekday Month Date" (e.g. Fri Aug 26)
+# \D{format} = the format is passed to strftime(3)
+# \h = hostname up to first '.'
+# \H = full hostname
+# \t = the current time in 24 hour HH:MM:SS format
+# \T = the current time in 12 hour HH:MM:SS format
+# \@ = current time in 12 hour am/pm format
+# \A = the current time in 12 hour HH:MM format
 # \u = username
-# \h = host
 # \w = working directory
+# \W = full path to working directory
 # $? = last return code
+# \\ = a backslash
 
+export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # export PS1="$GREEN[\u@\h \W$YELLOW\$(parse_git_branch)\$(parse_hg_branch)\$(parse_svn_branch)$GREEN]\\$ "
 # export PS1="$cyan\W$green\$(parse_git_branch)\$(parse_hg_branch)\$(parse_svn_branch)$NORMAL $ "
-export PS1="$cyan\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
+# export PS1="$cyan\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
+# PS1="\n[\u@\h]: \w\n$?>"
 
 # Exports ------------------------------------------------------------
-# export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 
 # go stuff
 export GOROOT=/Users/nathan/src/go
 export GOARCH=amd64
 export GOOS=darwin
 
-
+# PATH stuff
 export PATH=$GOROOT/bin:$PATH
