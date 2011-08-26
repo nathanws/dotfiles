@@ -1,10 +1,5 @@
 " My AMAZING .vimrc
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -14,9 +9,6 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -169,6 +161,10 @@ set expandtab		" Use spaces instead of tabs
 " Do not wrap line text. DOES NOT change the text in the buffer
 " set nowrap
 
+" Wrap lines at the right spot, not in the middle of a word
+set linebreak
+
+
 "---------- KEY BINDINGS -----------"
 
 " Don't use Ex mode, use Q for formatting
@@ -207,7 +203,7 @@ map N Nzz
 map n nzz
 
 " Switch : and ;
-nnoremap ; :
+noremap ; :
 nnoremap : ;
 
 " Disable search highlighting with keypress
