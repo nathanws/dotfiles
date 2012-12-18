@@ -98,6 +98,8 @@ alias src='source ~/.bashrc && source ~/.vimrc'
 # Because I'm lazy:
 alias h='history'
 
+# Because this path is way to long to remember
+alias gwt='cd /Applications/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.3.0.r36v201105191508/gwt-2.3.0'
 
 # FUNCTIONS ----------------------------------------------------------
 # cds up the number of directories passed in (e.g., up 3), default is 1
@@ -175,9 +177,11 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 export EDITOR=/usr/bin/vim
 
 # go stuff
-export GOROOT=/Users/nathan/src/go
+export GOROOT=/Users/nathanwsullivan/src/go
 export GOARCH=amd64
 export GOOS=darwin
 
 # PATH stuff
 export PATH=$GOROOT/bin:$PATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
