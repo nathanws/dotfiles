@@ -98,25 +98,69 @@ alias src='source ~/.bashrc && source ~/.vimrc'
 # Because I'm lazy:
 alias h='history'
 
-# Because this path is way to long to remember
-alias gwt='cd /Applications/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.3.0.r36v201105191508/gwt-2.3.0'
 
 # FUNCTIONS ----------------------------------------------------------
 # cds up the number of directories passed in (e.g., up 3), default is 1
-up() {
-    local d=""
-    limit=$1
-    for ((i=1 ; i <= limit ; i++))
-        do
-            d=$d/..
-        done
-    d=$(echo $d | sed 's/^\///')
-    if [ -z "$d" ]; then
-        d=..
-    fi
-    cd $d
+function up () {
+    local arg=${1:-1};
+    local dir=""
+    while [ $arg -gt 0 ]; do
+        dir="../$dir"
+        arg=$(($arg - 1));
+    done
+    cd $dir #>&/dev/null
+} 
+
+# Does a very nice lll after a cd into a directory. Cause I'm lazy.
+cdl () {
+    cd "$@" && lll 
 }
 
+# Backups a file, super handy
+bu() {
+    cp $1 `basename $1`_`date +%Y%m%d%H%M`.bak ;
+}
+
+# Make a directory and cd into it
+mkcd() {
+    mkdir -pv "$@" && cd "$@";
+}
+
+# List the file with the most recent timestamp
+latest () {
+    ls -lrt | tail -1
+}
+
+# replaces all spaces in the filename with periods
+# BECAUSE I HATE SPACES IN FILE NAMES
+rep () {
+    rename 's/ /./g' "$@"
+}
+
+# Memorizing tar syntax and other junk is too annoying
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)  tar xjf $1      ;;
+            *.tar.gz)   tar xzf $1      ;;
+            *.bz2)      bunzip2 $1      ;;
+            *.rar)      rar x $1        ;;
+            *.gz)       gunzip $1       ;;
+            *.tar)      tar xf $1       ;;
+            *.tbz2)     tar xjf $1      ;;
+            *.tgz)      tar xzf $1      ;;
+            *.zip)      unzip $1        ;;
+            *.Z)        uncompress $1   ;;
+            *)  echo "'$1' cannot be extracted via extract() (function from bashrc)";;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+#-----------------------------------------------------------------------------
+# Command line repo stuff
+# Shows the current branch name if the current directory is a svn, mercurial, or git repo
 function parse_git_branch {
     if [ -d .git ]
     then
@@ -145,11 +189,8 @@ parse_svn_url() {
 parse_svn_repository_root() {
     cat .svn/entries | tail +6 | head -1
 }
-
-# Backups a file, super handy
-bu() {
-    cp $1 `basename $1`_`date +%Y%m%d%H%M`.bak ;
-}
+# END repo stuff
+#-----------------------------------------------------------------------------
 
 
 # Command prompt configs --------------------------------------------- 
@@ -176,12 +217,5 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # Exports ------------------------------------------------------------
 export EDITOR=/usr/bin/vim
 
-# go stuff
-export GOROOT=/Users/nathanwsullivan/src/go
-export GOARCH=amd64
-export GOOS=darwin
-
-# PATH stuff
-export PATH=$GOROOT/bin:$PATH
-
+# PATH Stuff
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
