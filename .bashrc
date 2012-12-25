@@ -158,8 +158,9 @@ extract() {
     fi
 }
 
+
 #-----------------------------------------------------------------------------
-# Command line repo stuff
+# Command prompt repo stuff
 # Shows the current branch name if the current directory is a svn, mercurial, or git repo
 function parse_git_branch {
     if [ -d .git ]
