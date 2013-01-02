@@ -219,4 +219,5 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 export EDITOR=/usr/bin/vim
 
 # PATH Stuff
+PATH=$PATH:$HOME/src/phabricator/arcanist/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
