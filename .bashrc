@@ -193,6 +193,8 @@ parse_svn_repository_root() {
 # END repo stuff
 #-----------------------------------------------------------------------------
 
+# Exports ------------------------------------------------------------
+export EDITOR=/usr/bin/vim
 
 # Command prompt configs --------------------------------------------- 
 # \d = the date in "Weekday Month Date" (e.g. Fri Aug 26)
@@ -215,8 +217,8 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # export PS1="$cyan\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # PS1="\n[\u@\h]: \w\n$?>"
 
-# Exports ------------------------------------------------------------
-export EDITOR=/usr/bin/vim
+# Arcanist tab completion
+source $HOME/src/phabricator/arcanist/resources/shell/bash-completion
 
 # PATH Stuff
 PATH=$PATH:$HOME/src/phabricator/arcanist/bin
