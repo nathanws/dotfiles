@@ -98,6 +98,9 @@ alias src='source ~/.bashrc && source ~/.vimrc'
 # Because I'm lazy:
 alias h='history'
 
+# show a nice disk usage thing
+alias usage='df -hT'
+
 
 # FUNCTIONS ----------------------------------------------------------
 # cds up the number of directories passed in (e.g., up 3), default is 1
@@ -220,3 +223,5 @@ export EDITOR=/usr/bin/vim
 
 # PATH Stuff
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export PHABRICATOR_ENV=custom/myconfig
