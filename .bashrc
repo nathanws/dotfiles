@@ -171,7 +171,7 @@ grope() {
     while getopts den OPTION; do
         case "$OPTION" in
         d)
-            shownums="yes" ;;
+            shownums="no" ;;
         e)
             exact="yes" ;;
         n)
@@ -196,10 +196,14 @@ grope() {
         return 0
     fi
 
-    CMD="grep -n"
+    CMD="grep"
 
     if [ "$2" ]; then
         CMD="$CMD -A$2"
+    fi
+
+    if [ $shownums = "yes" ]; then
+        CMD="$CMD -n"
     fi
 
     if [ $exact = "no" ]; then
