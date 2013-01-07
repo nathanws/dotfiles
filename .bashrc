@@ -161,6 +161,56 @@ extract() {
     fi
 }
 
+# Nice shortcut to run grep with my common options
+grope() {
+    exact=false
+    numOnly=false
+
+    while getopts en OPTION; do
+        case "$OPTION" in
+        e)
+            exact=true ;;
+        n)
+            numOnly=true ;;
+        [?])
+            echo "Usage: $0 [OPTIONS]... TEXT [NUMLINES]" >&2
+            echo "grep for TEXT with the -i -n -A options and output NUMLINES after the match"
+            echo "Example: grope text 3"
+            echo ""
+            echo "Options:"
+            echo "  -e  output only if the text is an exact match (case sensitive)"
+            echo "  -n  output only the line number the match was on. Returns line number for first match only"
+            echo ""
+            exit 1 ;;
+        esac
+    done
+    shift $((OPTIND-1))
+
+
+
+    if [ -z "$1" ]; then
+        echo "Enter text to grep for."
+        return 0
+    fi
+
+    CMD="grep -n"
+
+    if [ "$2" ]; then
+        CMD="$CMD -A$2"
+    fi
+
+    if [ $exact = false ]; then
+        CMD="$CMD -i"
+    fi
+
+    CMD="$CMD $1"
+
+    if [ $numOnly = true ]; then
+        CMD="$CMD | cut -f1 -d:"
+    fi
+
+    eval ${CMD}
+}
 
 #-----------------------------------------------------------------------------
 # Command prompt repo stuff
