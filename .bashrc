@@ -83,6 +83,7 @@ alias del='rm -target-directory=$HOME/.Trash/'
 alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 
 # git stuff
+alias gd='git diff'
 alias gs='git status'
 alias gl='git log'
 alias glo='git log --oneline'
@@ -163,30 +164,32 @@ extract() {
 
 # Nice shortcut to run grep with my common options
 grope() {
-    exact=false
-    numOnly=false
+    exact="no"
+    numOnly="no"
+    shownums="yes"
 
-    while getopts en OPTION; do
+    while getopts den OPTION; do
         case "$OPTION" in
+        d)
+            shownums="yes" ;;
         e)
-            exact=true ;;
+            exact="yes" ;;
         n)
-            numOnly=true ;;
+            numOnly="yes" ;;
         [?])
             echo "Usage: $0 [OPTIONS]... TEXT [NUMLINES]" >&2
             echo "grep for TEXT with the -i -n -A options and output NUMLINES after the match"
             echo "Example: grope text 3"
             echo ""
             echo "Options:"
+            echo "  -d  do not output line number"
             echo "  -e  output only if the text is an exact match (case sensitive)"
-            echo "  -n  output only the line number the match was on. Returns line number for first match only"
+            echo "  -n  output only the line number the match was on."
             echo ""
             exit 1 ;;
         esac
     done
     shift $((OPTIND-1))
-
-
 
     if [ -z "$1" ]; then
         echo "Enter text to grep for."
@@ -199,13 +202,13 @@ grope() {
         CMD="$CMD -A$2"
     fi
 
-    if [ $exact = false ]; then
+    if [ $exact = "no" ]; then
         CMD="$CMD -i"
     fi
 
     CMD="$CMD $1"
 
-    if [ $numOnly = true ]; then
+    if [ $numOnly = "yes" ]; then
         CMD="$CMD | cut -f1 -d:"
     fi
 
