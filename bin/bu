@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Backups a file, super handy
+
+if [ -z "$@" ]; then
+    echo "Usage: bu [FILE]"
+    echo "Makes a copy of the FILE and appends a timestamp and .bak extension to it"
+    return 0;
+fi
+
+cp $1 `basename $1`_`date +%Y%m%d%H%M`.bak ;

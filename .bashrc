@@ -103,15 +103,20 @@ alias h='history'
 alias usage='df -hT'
 
 # FUNCTIONS ----------------------------------------------------------
+# cds up the specified number of directories, default is 1
+function up () {
+    local arg=${1:-1};
+    local dir=""
+    while [ $arg -gt 0 ]; do
+        dir="../$dir"
+        arg=$(($arg - 1));
+    done
+    cd $dir #>&/dev/null
+}
 
 # Does a very nice lll after a cd into a directory. Cause I'm lazy.
 cdl () {
     cd "$@" && lll 
-}
-
-# Backups a file, super handy
-bu() {
-    cp $1 `basename $1`_`date +%Y%m%d%H%M`.bak ;
 }
 
 # Make a directory and cd into it

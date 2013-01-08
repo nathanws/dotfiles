@@ -1,2 +1,0 @@
-- Create mp3 rename function to rename them how I like it, use either eyeD3 or
-  ruby-mp3info
