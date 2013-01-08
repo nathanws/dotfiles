@@ -94,14 +94,13 @@ alias webs='python -m SimpleHTTPServer'
 # Becase I'm always editing these damn things
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
-alias src='source ~/.bashrc'
+alias src='source ~/.aliases'
 
 # Because I'm lazy:
 alias h='history'
 
 # show a nice disk usage thing
 alias usage='df -hT'
-
 
 # FUNCTIONS ----------------------------------------------------------
 # cds up the number of directories passed in (e.g., up 3), default is 1
@@ -231,9 +230,14 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # Arcanist tab completion
 source $HOME/src/phabricator/arcanist/resources/shell/bash-completion
 
+#todo.txt tab completion
+source $HOME/.todo/todo_completion
+complete -F _todo t # Since todo.sh aliased to t
+
 # PATH Stuff
-PATH=$PATH:$HOME/src/phabricator/arcanist/bin
+PATH=$PATH:$HOME/src/phabricator/arcanist/bin # Add arcanist to PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/src/dotfiles/bin
+PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
+PATH=$PATH:$HOME/.todo # Add todo.txt stuff to PATH
 
 export PHABRICATOR_ENV=custom/myconfig
