@@ -103,16 +103,6 @@ alias h='history'
 alias usage='df -hT'
 
 # FUNCTIONS ----------------------------------------------------------
-# cds up the number of directories passed in (e.g., up 3), default is 1
-function up () {
-    local arg=${1:-1};
-    local dir=""
-    while [ $arg -gt 0 ]; do
-        dir="../$dir"
-        arg=$(($arg - 1));
-    done
-    cd $dir #>&/dev/null
-} 
 
 # Does a very nice lll after a cd into a directory. Cause I'm lazy.
 cdl () {
