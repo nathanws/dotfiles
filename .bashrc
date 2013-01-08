@@ -94,7 +94,7 @@ alias webs='python -m SimpleHTTPServer'
 # Becase I'm always editing these damn things
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
-alias src='source ~/.bashrc && source ~/.vimrc'
+alias src='source ~/.bashrc'
 
 # Because I'm lazy:
 alias h='history'
@@ -135,11 +135,19 @@ latest () {
     ls -lrt | tail -1
 }
 
-# replaces all spaces in the filename with periods
+# replaces all spaces in the filename with periods, and removes all parentheses and commas because they also suck.
 # BECAUSE I HATE SPACES IN FILE NAMES
-rep () {
-    rename 's/ /./g' "$@"
+ren () {
+    file_name="$@"
+    file_name=${file_name// /.}
+    file_name=${file_name//[(]/}
+    file_name=${file_name//[)]/}
+    file_name=${file_name//,/}
+    CMD="mv \"$@\" $file_name"
+    eval ${CMD}
 }
+
+alias rap='rsync -avh --progress'
 
 # Memorizing tar syntax and other junk is too annoying
 extract() {
@@ -160,63 +168,6 @@ extract() {
     else
         echo "'$1' is not a valid file"
     fi
-}
-
-# Nice shortcut to run grep with my common options
-grope() {
-    exact="no"
-    numOnly="no"
-    shownums="yes"
-
-    while getopts den OPTION; do
-        case "$OPTION" in
-        d)
-            shownums="no" ;;
-        e)
-            exact="yes" ;;
-        n)
-            numOnly="yes" ;;
-        [?])
-            echo "Usage: $0 [OPTIONS]... TEXT [NUMLINES]" >&2
-            echo "grep for TEXT with the -i -n -A options and output NUMLINES after the match"
-            echo "Example: grope text 3"
-            echo ""
-            echo "Options:"
-            echo "  -d  do not output line number"
-            echo "  -e  output only if the text is an exact match (case sensitive)"
-            echo "  -n  output only the line number the match was on."
-            echo ""
-            exit 1 ;;
-        esac
-    done
-    shift $((OPTIND-1))
-
-    if [ -z "$1" ]; then
-        echo "Enter text to grep for."
-        return 0
-    fi
-
-    CMD="grep"
-
-    if [ "$2" ]; then
-        CMD="$CMD -A$2"
-    fi
-
-    if [ $shownums = "yes" ]; then
-        CMD="$CMD -n"
-    fi
-
-    if [ $exact = "no" ]; then
-        CMD="$CMD -i"
-    fi
-
-    CMD="$CMD $1"
-
-    if [ $numOnly = "yes" ]; then
-        CMD="$CMD | cut -f1 -d:"
-    fi
-
-    eval ${CMD}
 }
 
 #-----------------------------------------------------------------------------
@@ -283,5 +234,6 @@ source $HOME/src/phabricator/arcanist/resources/shell/bash-completion
 # PATH Stuff
 PATH=$PATH:$HOME/src/phabricator/arcanist/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/src/dotfiles/bin
 
 export PHABRICATOR_ENV=custom/myconfig
