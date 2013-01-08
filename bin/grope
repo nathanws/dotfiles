@@ -2,8 +2,6 @@
 
 # Nice shortcut to run grep with my common options
 
-
-
 exact="no"
 numOnly="no"
 shownums="yes"

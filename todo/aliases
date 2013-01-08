@@ -1,1 +1,2 @@
 alias t='todo.sh'
+alias ta='t add'
