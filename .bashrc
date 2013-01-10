@@ -85,9 +85,11 @@ alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 
 # git stuff
 alias gd='git diff'
-alias gs='git status'
+alias gdn='git diff --name-only' # list only filenames of changes not staged for commit
 alias gl='git log'
 alias glo='git log --oneline'
+alias gs='git status'
+alias gshow='git show --name-only' # show what files were changed on the last commit
 
 # Quick way to serve files in HTTP from the current directory
 alias webs='python -m SimpleHTTPServer'
@@ -95,7 +97,7 @@ alias webs='python -m SimpleHTTPServer'
 # Becase I'm always editing these damn things
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
-alias src='source ~/.aliases'
+alias src='source ~/.bashrc && source ~/.aliases'
 
 # Because I'm lazy:
 alias h='history'
@@ -104,6 +106,11 @@ alias h='history'
 alias usage='df -hT'
 
 # FUNCTIONS ----------------------------------------------------------
+# Does a very nice lll after a cd into a directory. Cause I'm lazy.
+cdl () {
+    cd "$@" && lll 
+}
+
 # cds up the specified number of directories, default is 1
 function up () {
     local arg=${1:-1};
@@ -115,9 +122,15 @@ function up () {
     cd $dir #>&/dev/null
 }
 
-# Does a very nice lll after a cd into a directory. Cause I'm lazy.
-cdl () {
-    cd "$@" && lll 
+# Bastard child of up() and cdl()
+function upl () {
+    local arg=${1:-1};
+    local dir=""
+    while [ $arg -gt 0 ]; do
+        dir="../$dir"
+        arg=$(($arg - 1));
+    done
+    cdl $dir #>&/dev/null
 }
 
 # Make a directory and cd into it
