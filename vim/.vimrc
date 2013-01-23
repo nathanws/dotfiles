@@ -167,6 +167,10 @@ set linebreak
 
 "---------- KEY BINDINGS -----------"
 
+nnoremap <C-j> guw
+nnoremap <C-k> gUw
+
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 

@@ -78,7 +78,7 @@ alias lll='ls -lah'
 # alias ls='ls -G'
 
 # Mainly used for OSX since rm permanently deletes
-alias del='rm -target-directory=$HOME/.Trash/'
+#alias del='rm -target-directory=$HOME/.Trash/'
 
 # Display size (sorted) of the folders in current directory
 alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
@@ -143,20 +143,55 @@ latest () {
     ls -lrt | tail -1
 }
 
-# replaces all spaces in the filename with periods, and removes all parentheses and commas because they also suck.
-# BECAUSE I HATE SPACES IN FILE NAMES
-ren () {
-    file_name="$@"
-    file_name=${file_name// /.}
-    file_name=${file_name//[(]/}
-    file_name=${file_name//[)]/}
-    file_name=${file_name//,/}
-    CMD="mv \"$@\" $file_name"
-    eval ${CMD}
+# remove all stupid temp files that I hate
+clean () {
+    rm *.url *.nzb *.sfv *.srr *.nfo
 }
 
+mov () {
+    rap "$@" /media/nathan/MOVIES
+}
+grov () {
+    lll /media/nathan/MOVIES | grope "$@"
+}
+
+# Common rsync options that I use
 alias rap='rsync -avh --progress'
 
+# Common folders I often want to go to
+alias cddown='cdl /media/nathan/OTHER/Downloads'
+alias cdmov='cd /media/nathan/MOVIES'
+alias cdtv='cd /media/nathan/TV'
+alias cddoc='cdl /media/nathan/DOCUMENTS'
+alias cdoth='cdl /media/nathan/OTHER'
+alias cdsrc='cdl ~/src'
+
+# prints help stuff for my shorts
+shorts () {
+    echo "GENERAL NAVIGATION"
+    echo "cdl   DIR     cd [DIR] && lll"
+    echo "up    NUM     move up [NUM] directories, default is 1"
+    echo "upl   NUM     move up [NUM] directories && lll"
+    echo ""
+
+    echo "DIRECTORY NAVIGATION"
+    echo "cddoc     cdl to DOCUMENTS directory"
+    echo "cddown    cdl to DOWNLOADS directory"
+    echo "cdmov     cd to MOVIES directory"
+    echo "cdoth     cdl to OTHER directory"
+    echo "cdsrc     cdl to my source code directory"
+    echo "cdtv      cd to TV directory"
+    echo ""
+
+    echo "OTHER SHORTS"
+    echo "clean         rm *.url *.nzb *.sfv *.srr *.nfo"
+    echo "grope         my special grep"
+    echo "grov          grope MOVIES directory"
+    echo "latest        list the file with the most recent timestamp"
+    echo "mkcd  DIR     mkdir [DIR] && cd [DIR]"
+    echo "mov   FILE    rap the [FILE] to the MOVIES directory"
+    echo "rap   FILE    rsync -avh --progress [FILE]"
+}
 
 #-----------------------------------------------------------------------------
 # Command prompt repo stuff
