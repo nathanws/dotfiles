@@ -90,6 +90,7 @@ alias gl='git log'
 alias glo='git log --oneline'
 alias gs='git status'
 alias gshow='git show --name-only' # show what files were changed on the last commit
+alias gi='git update-index --assume-unchanged'
 
 # Quick way to serve files in HTTP from the current directory
 alias webs='python -m SimpleHTTPServer'
@@ -155,6 +156,11 @@ grov () {
     lll /media/nathan/MOVIES | grope "$@"
 }
 
+# lll grope
+lgrope () {
+    lll | grope "$@"
+}
+
 # Common rsync options that I use
 alias rap='rsync -avh --progress'
 
@@ -188,9 +194,10 @@ shorts () {
     echo "grope         my special grep"
     echo "grov          grope MOVIES directory"
     echo "latest        list the file with the most recent timestamp"
-    echo "mkcd  DIR     mkdir [DIR] && cd [DIR]"
-    echo "mov   FILE    rap the [FILE] to the MOVIES directory"
-    echo "rap   FILE    rsync -avh --progress [FILE]"
+    echo "lgrope TEXT   lll | grope [TEXT]"
+    echo "mkcd   DIR     mkdir [DIR] && cd [DIR]"
+    echo "mov    FILE    rap the [FILE] to the MOVIES directory"
+    echo "rap    FILE    rsync -avh --progress [FILE]"
 }
 
 #-----------------------------------------------------------------------------
