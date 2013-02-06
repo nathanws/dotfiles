@@ -153,8 +153,8 @@ set sidescroll=5
 set listchars+=precedes:<,extends:>
 
 " Set tab width
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 set expandtab		" Use spaces instead of tabs
 
