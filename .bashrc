@@ -77,6 +77,8 @@ alias ll='ls -l'
 alias lll='ls -lah'
 # alias ls='ls -G'
 
+alias cls='clear'
+
 # Mainly used for OSX since rm permanently deletes
 #alias del='rm -target-directory=$HOME/.Trash/'
 
@@ -91,6 +93,7 @@ alias glo='git log --oneline'
 alias gs='git status'
 alias gshow='git show --name-only' # show what files were changed on the last commit
 alias gi='git update-index --assume-unchanged'
+alias gba='git branch -a'
 
 # Quick way to serve files in HTTP from the current directory
 alias webs='python -m SimpleHTTPServer'
