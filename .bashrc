@@ -109,6 +109,9 @@ alias h='history'
 # show a nice disk usage thing
 alias usage='df -hT'
 
+# weather
+alias weather="curl -s http://www.srh.noaa.gov/data/LIX/RWRLIX | grep SLIDELL"
+
 # FUNCTIONS ----------------------------------------------------------
 # Does a very nice lll after a cd into a directory. Cause I'm lazy.
 cdl () {
@@ -201,6 +204,7 @@ shorts () {
     echo "mkcd   DIR     mkdir [DIR] && cd [DIR]"
     echo "mov    FILE    rap the [FILE] to the MOVIES directory"
     echo "rap    FILE    rsync -avh --progress [FILE]"
+    echo "weather       display the weather"
 }
 
 #-----------------------------------------------------------------------------
