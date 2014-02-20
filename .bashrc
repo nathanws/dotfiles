@@ -270,4 +270,4 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 
 
 # PATH Stuff
-#PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
+PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
