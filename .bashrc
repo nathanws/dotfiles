@@ -3,8 +3,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-source ~/src/dotfiles/aliases.sh
-
 # COLORS -------------------------------------------------------------
 black='\[\033[0;30m\]'
 red='\[\033[0;31m\]'
@@ -101,7 +99,7 @@ alias webs='python -m SimpleHTTPServer'
 # Becase I'm always editing these damn things
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
-alias src='source ~/.bashrc && source ~/.aliases'
+alias src='source ~/.bashrc'
 
 # Because I'm lazy:
 alias h='history'
@@ -155,9 +153,13 @@ clean () {
     rm *.url *.nzb *.sfv *.srr *.nfo
 }
 
+# move a file into my MOVIES directory
+# TODO: set MOVIES directory in a separate config file, or move it to a node program
 mov () {
     rap "$@" /media/nathan/MOVIES
 }
+
+# grope my MOVIES directory
 grov () {
     lll /media/nathan/MOVIES | grope "$@"
 }
@@ -171,6 +173,7 @@ lgrope () {
 alias rap='rsync -avh --progress'
 
 # Common folders I often want to go to
+# TODO: set these values in a separate config file
 alias cddown='cdl /media/nathan/OTHER/Downloads'
 alias cdmov='cd /media/nathan/MOVIES'
 alias cdtv='cd /media/nathan/TV'
@@ -265,17 +268,6 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # export PS1="$cyan\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # PS1="\n[\u@\h]: \w\n$?>"
 
-# Arcanist tab completion
-source $HOME/src/phabricator/arcanist/resources/shell/bash-completion
-
-#todo.txt tab completion
-source $HOME/.todo/todo_completion
-complete -F _todo t # Since todo.sh aliased to t
 
 # PATH Stuff
-PATH=$PATH:$HOME/src/phabricator/arcanist/bin # Add arcanist to PATH
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
-PATH=$PATH:$HOME/.todo # Add todo.txt stuff to PATH
-
-export PHABRICATOR_ENV=custom/myconfig
+#PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
