@@ -81,7 +81,7 @@ alias cls='clear'
 #alias del='rm -target-directory=$HOME/.Trash/'
 
 # Display size (sorted) of the folders in current directory
-alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
+# alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 
 # git stuff
 alias gd='git diff'
@@ -188,6 +188,12 @@ shorts () {
     echo "up    NUM     move up [NUM] directories, default is 1"
     echo "upl   NUM     move up [NUM] directories && lll"
     echo ""
+    
+    echo "DIRECTORY LISTINGS"
+    echo "la     ls -A"
+    echo "ll     ls -l"
+    echo "lll    ls -lah"
+    echo ""
 
     echo "DIRECTORY NAVIGATION"
     echo "cddoc     cdl to DOCUMENTS directory"
@@ -197,17 +203,32 @@ shorts () {
     echo "cdsrc     cdl to my source code directory"
     echo "cdtv      cd to TV directory"
     echo ""
+    
+    echo "GIT"
+    echo "gd       `git diff`"
+    echo "gdn      `git diff --name-only`, list only filenames of changes not staged for commit"
+    echo "gl       `git log`"
+    echo "glo      `git log --oneline`"
+    echo "gs       `git status`"
+    echo "gshow    `git show --name-only`, show what files were changed on the last commit"
+    echo "gba      `git branch -a`"
+    echo ""
 
     echo "OTHER SHORTS"
     echo "clean         rm *.url *.nzb *.sfv *.srr *.nfo"
-    echo "grope         my special grep"
+    echo "cls           clear the terminal screen"
+    echo "grope         my special grep, `grope -h` for options"
     echo "grov          grope MOVIES directory"
+    echo "h             bash history, because I too lazy to type `history`"
     echo "latest        list the file with the most recent timestamp"
     echo "lgrope TEXT   lll | grope [TEXT]"
     echo "mkcd   DIR     mkdir [DIR] && cd [DIR]"
     echo "mov    FILE    rap the [FILE] to the MOVIES directory"
     echo "rap    FILE    rsync -avh --progress [FILE]"
+    echo "shorts        list this help dialog"
+    echo "usage         display a nice disk usage thing"
     echo "weather       display the weather"
+    echo "webs          quick way to serve files in HTTP from the current directory"
 }
 
 #-----------------------------------------------------------------------------
