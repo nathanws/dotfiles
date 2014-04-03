@@ -87,8 +87,12 @@ Control Mod1 Left :PrevWorkspace
 Control Mod1 Right :NextWorkspace
 
 # send the current window to previous/next workspace
-Mod4 Left :SendToPrevWorkspace
-Mod4 Right :SendToNextWorkspace
+#Mod4 Left :SendToPrevWorkspace
+#Mod4 Right :SendToNextWorkspace
+Mod4 Left :MacroCmd {MoveTo 0 0} {ResizeTo 50% 100%}
+Mod4 Right :MacroCmd {MoveTo 50% 0} {ResizeTo 50% 100%}
+Mod4 Down :MaximizeVertical
+Mod4 Up :MaximizeWindow
 
 # send the current window and follow it to previous/next workspace
 Control Mod4 Left :TakeToPrevWorkspace
