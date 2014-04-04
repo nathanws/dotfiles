@@ -245,6 +245,7 @@ nnoremap <F6> 1<bar>xxx
 " ------- NERDTree ------------
 " Open it
 nnoremap <C-n> :NERDTreeToggle<cr>
+nnoremap <leader>d :NERDTreeToggle<cr>
 
 " ------- SuperTab ------------
 " Set the default Tab behavior to look for User stuff first, this
@@ -259,6 +260,10 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " but still show the popup selections (menuone)
 set completeopt=longest,menuone
 
+
+" ------- TagBar ------------
+"  Open it
+nnoremap <leader>t :TagbarToggle<cr>
 
 " ------- PLUGINS -------"
 
