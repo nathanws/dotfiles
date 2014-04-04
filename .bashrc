@@ -93,6 +93,7 @@ alias gshow='git show --name-only' # show what files were changed on the last co
 alias gi='git update-index --assume-unchanged'
 alias gba='git branch -a'
 alias gco='git checkout'
+alias gsub='git submodule init && git submodule update'
 
 # Quick way to serve files in HTTP from the current directory
 alias webs='python -m SimpleHTTPServer'
@@ -213,6 +214,8 @@ shorts () {
     echo "gs       'git status'"
     echo "gshow    'git show --name-only', show what files were changed on the last commit"
     echo "gba      'git branch -a'"
+    echo "gco      'git checkout'"
+    echo "gsub     'git submodule init && git submodule update'"
     echo ""
 
     echo "OTHER SHORTS"
