@@ -4,6 +4,10 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" start pathogen plugin stuff
+" https://github.com/tpope/vim-pathogen
+execute pathogen#infect()
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -231,6 +235,9 @@ nnoremap <F5> 1<bar><Insert>// <ESC>
 " Remove comments from beginning of line
 nnoremap <F6> 1<bar>xxx
 
+" ------- NERDTree ------------
+" Open it
+nnoremap <C-n> :NERDTreeToggle<cr>
 
 " ------- PLUGINS -------"
 

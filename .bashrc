@@ -92,6 +92,7 @@ alias gs='git status'
 alias gshow='git show --name-only' # show what files were changed on the last commit
 alias gi='git update-index --assume-unchanged'
 alias gba='git branch -a'
+alias gco='git checkout'
 
 # Quick way to serve files in HTTP from the current directory
 alias webs='python -m SimpleHTTPServer'
