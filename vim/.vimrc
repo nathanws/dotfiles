@@ -171,9 +171,16 @@ set linebreak
 
 "---------- KEY BINDINGS -----------"
 
-nnoremap <C-j> guw
-nnoremap <C-k> gUw
+" arrow keys for window navigation
+map <Right> <c-w>l
+map <Left> <c-w>h
+map <Up> <c-w>k
+map <Down> <c-w>j
 
+" make current selection all lowercase
+nnoremap <C-j> guw
+" make current selection all uppercase
+nnoremap <C-k> gUw
 
 " Don't use Ex mode, use Q for formatting
 map Q gq

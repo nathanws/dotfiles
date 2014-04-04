@@ -1,2 +1,5 @@
 *.DS_Store
 *~
+
+vim/.vim/doc
+vim/.vim/eclim/doc
