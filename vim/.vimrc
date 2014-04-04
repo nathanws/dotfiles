@@ -239,6 +239,20 @@ nnoremap <F6> 1<bar>xxx
 " Open it
 nnoremap <C-n> :NERDTreeToggle<cr>
 
+" ------- SuperTab ------------
+" Set the default Tab behavior to look for User stuff first, this
+" makes it show eclim stuff first.
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
+" This automatically closes the Preview window of a popup selection
+" when a selection is made
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+" This stops omnicomplete from automatically choosing an entry (longest)
+" but still show the popup selections (menuone)
+set completeopt=longest,menuone
+
+
 " ------- PLUGINS -------"
 
 " This will make the % key switch between if/else, HTML and other tags.
