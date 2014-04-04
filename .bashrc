@@ -70,10 +70,10 @@ export HISTTIMEFORMAT='%F %T '
 
 
 # Aliases ------------------------------------------------------------
-alias la='ls -A'
-alias ll='ls -l'
-alias lll='ls -lah'
-# alias ls='ls -G'
+alias la='ls -A -G'
+alias ll='ls -l -G'
+alias lll='ls -lah -G'
+alias ls='ls -G'
 
 alias cls='clear'
 
