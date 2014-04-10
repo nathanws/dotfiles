@@ -75,6 +75,13 @@ alias ll='ls -l -G'
 alias lll='ls -lah -G'
 alias ls='ls -G'
 
+# list only files in the current directory
+alias lsf='lll -p | grep -v /'
+
+# list only directories in the current directory
+alias lsd='lll -p | grep /'
+
+# clear the terminal window
 alias cls='clear'
 
 # Mainly used for OSX since rm permanently deletes
