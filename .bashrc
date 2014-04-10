@@ -162,6 +162,11 @@ clean () {
     rm *.url *.nzb *.sfv *.srr *.nfo
 }
 
+# search contents of files for a phrase
+tsearch () {
+    grep -rnw . -e "$1" $2 
+}
+
 # move a file into my MOVIES directory
 # TODO: set MOVIES directory in a separate config file, or move it to a node program
 mov () {
@@ -237,6 +242,7 @@ shorts () {
     echo "mov    FILE    rap the [FILE] to the MOVIES directory"
     echo "rap    FILE    rsync -avh --progress [FILE]"
     echo "shorts        list this help dialog"
+    echo "tsearch TEXT  search the contents of all files in the current directory for the specified TEXT"
     echo "usage         display a nice disk usage thing"
     echo "weather       display the weather"
     echo "webs          quick way to serve files in HTTP from the current directory"
