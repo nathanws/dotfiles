@@ -5,10 +5,19 @@ Feel free to make suggestions.
 
 ## To Install
 
+* clone it
+* Update submodules:
+
+ ```
+ git submodule init && git submodule update
+ ```
+ 
 * Run the install script
+
  ```
  ./install.sh
  ```
+ 
 * Install Exuberant CTAGs (for the Tagbar Vim Plugin) 
  * Download source from http://ctags.sourceforge.net and extract
  * `cd` into directory and run `./configure`
