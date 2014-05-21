@@ -128,6 +128,12 @@ set matchtime=2         " Time, in seconds, to show matching bracket
 " Shorten command-line text prompts, and do not show intro. See :help shortmess
 set shortmess=atI
 
+" Always display the status line
+set laststatus=2
+
+" Adjust keycode timeout length, makes chaning modes snappier
+set ttimeoutlen=50
+
 
 "------- SEARCHING BEHAVIOR -------"
 
