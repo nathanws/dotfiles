@@ -70,7 +70,7 @@ if g:lucius_style == "dark"
 
     hi Normal       guifg=#e8e8e8   guibg=#202020   ctermfg=253    ctermbg=234       gui=none      cterm=none
 
-    hi Comment      guifg=#606060   guibg=NONE      ctermfg=240    ctermbg=NONE      gui=none      cterm=none
+    hi Comment      guifg=#8a8a8a   guibg=NONE      ctermfg=245    ctermbg=NONE      gui=none      cterm=none
 
     hi Constant     guifg=#b0d090   guibg=NONE      ctermfg=150    ctermbg=NONE      gui=none      cterm=none
     hi BConstant    guifg=#b0d090   guibg=NONE      ctermfg=150    ctermbg=NONE      gui=bold      cterm=bold
