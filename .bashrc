@@ -100,6 +100,7 @@ alias gshow='git show --name-only' # show what files were changed on the last co
 alias gi='git update-index --assume-unchanged'
 alias gba='git branch -a'
 alias gco='git checkout'
+alias gsetupgh='git config user.email "nathanws@users.noreply.github.com" && git config user.name "Nathan"'
 alias gsub='git submodule init && git submodule update'
 
 # Quick way to serve files in HTTP from the current directory
@@ -227,6 +228,7 @@ shorts () {
     echo "gshow    'git show --name-only', show what files were changed on the last commit"
     echo "gba      'git branch -a'"
     echo "gco      'git checkout'"
+    echo "gsetupgh configs the current git repo to use my github name/email"
     echo "gsub     'git submodule init && git submodule update'"
     echo ""
 
