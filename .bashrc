@@ -42,6 +42,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Load any other stuff if available
+if [ -f ~/.other_stuff ]; then
+    . ~/.other_stuff
+fi
+
 
 # History Settings ---------------------------------------------------
 

@@ -48,6 +48,14 @@ if has("autocmd")
 
 endif " has("autocmd")
 
+" Set syntax highlighting for the .other_stuff file
+" Don't want to remove all autocommands. Instead, use a variable to ensure that 
+" Vim includes the autocommands only once:
+if !exists("autocommands_loaded") 
+  let autocommands_loaded = 1
+  au BufReadPost .other_stuff set syntax=sh
+endif
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
