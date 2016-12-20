@@ -275,17 +275,13 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 set completeopt=longest,menuone
 
 
-" ------- TagBar ------------
-"  Open it
-nnoremap <leader>t :TagbarToggle<cr>
-
 " ------- PLUGINS -------"
 
 " This will make the % key switch between if/else, HTML and other tags.
 runtime plugins/matchit.vim
 
 " Automatically closes [ ( { " '
-"runtime plugins/autoclose.vim
+runtime plugins/autoclose.vim
 
 " Awesome thing that makes commenting out lines EASY!
-" runtime plugins/NERD_commenter.vim
+runtime plugins/NERD_commenter.vim
