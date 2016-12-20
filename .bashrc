@@ -1,7 +1,10 @@
 # My AMAZING bashrc
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # COLORS -------------------------------------------------------------
 black='\[\033[0;30m\]'
@@ -36,6 +39,47 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm/xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+#if [ "$color_prompt" = yes ]; then
+#    if [[ ${EUID} == 0 ]] ; then
+#        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+#    else
+#        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+#    fi
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
+#fi
+#unset color_prompt force_color_prompt
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions, loads from there if available
 if [ -f ~/.bash_aliases ]; then
@@ -75,10 +119,10 @@ export HISTTIMEFORMAT='%F %T '
 
 
 # Aliases ------------------------------------------------------------
-alias la='ls -A -G'
-alias ll='ls -l -G'
-alias lll='ls -lah -G'
-alias ls='ls -G'
+alias la='ls -A -G --color=auto'
+alias ll='ls -l -G --color=auto'
+alias lll='ls -lah -G --color=auto'
+alias ls='ls -G --color=auto'
 
 # list only files in the current directory
 alias lsf='lll -p | grep -v /'
@@ -89,8 +133,26 @@ alias lsd='lll -p | grep /'
 # clear the terminal window
 alias cls='clear'
 
-# Mainly used for OSX since rm permanently deletes
-#alias del='rm -target-directory=$HOME/.Trash/'
+# Define any OS specific stuff here
+case "$(uname -s)" in
+
+  # OSX
+  Darwin)
+   # Mainly used for OSX since rm permanently deletes
+   alias del='rm -target-directory=$HOME/.Trash/'
+   ;;
+
+  Linux)
+  ;;
+
+  # Windows
+  CYGWIN*|MINGW32*|MSYS*)
+  ;;
+
+  # Anything else
+  *)
+  ;;
+esac
 
 # Display size (sorted) of the folders in current directory
 # alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
@@ -114,7 +176,7 @@ alias webs='python -m SimpleHTTPServer'
 # Becase I'm always editing these damn things
 alias vrc='vim ~/.vimrc'
 alias brc='vim ~/.bashrc'
-alias src='source ~/.bashrc'
+alias src='source ~/.bash_profile'
 
 # Because I'm lazy:
 alias h='history'
@@ -122,13 +184,10 @@ alias h='history'
 # show a nice disk usage thing
 alias usage='df -hT'
 
-# weather
-alias weather="curl -s http://www.srh.noaa.gov/data/LIX/RWRLIX | grep SLIDELL"
-
 # FUNCTIONS ----------------------------------------------------------
 # Does a very nice lll after a cd into a directory. Cause I'm lazy.
 cdl () {
-    cd "$@" && lll 
+    cd "$@" && lll
 }
 
 # cds up the specified number of directories, default is 1
@@ -170,18 +229,7 @@ clean () {
 
 # search contents of files for a phrase
 tsearch () {
-    grep -rnw . -e "$1" $2 
-}
-
-# move a file into my MOVIES directory
-# TODO: set MOVIES directory in a separate config file, or move it to a node program
-mov () {
-    rap "$@" /media/nathan/MOVIES
-}
-
-# grope my MOVIES directory
-grov () {
-    lll /media/nathan/MOVIES | grope "$@"
+    grep -rnw . -e "$1" $2
 }
 
 # lll grope
@@ -194,11 +242,6 @@ alias rap='rsync -avh --progress'
 
 # Common folders I often want to go to
 # TODO: set these values in a separate config file
-alias cddown='cdl /media/nathan/OTHER/Downloads'
-alias cdmov='cd /media/nathan/MOVIES'
-alias cdtv='cd /media/nathan/TV'
-alias cddoc='cdl /media/nathan/DOCUMENTS'
-alias cdoth='cdl /media/nathan/OTHER'
 alias cdsrc='cdl ~/src'
 
 # prints help stuff for my shorts
@@ -208,7 +251,7 @@ shorts () {
     echo "up    NUM     move up [NUM] directories, default is 1"
     echo "upl   NUM     move up [NUM] directories && lll"
     echo ""
-    
+
     echo "DIRECTORY LISTINGS"
     echo "la     ls -A"
     echo "ll     ls -l"
@@ -216,14 +259,9 @@ shorts () {
     echo ""
 
     echo "DIRECTORY NAVIGATION"
-    echo "cddoc     cdl to DOCUMENTS directory"
-    echo "cddown    cdl to DOWNLOADS directory"
-    echo "cdmov     cd to MOVIES directory"
-    echo "cdoth     cdl to OTHER directory"
     echo "cdsrc     cdl to my source code directory"
-    echo "cdtv      cd to TV directory"
     echo ""
-    
+
     echo "GIT"
     echo "gd       'git diff'"
     echo "gdn      'git diff --name-only', list only filenames of changes not staged for commit"
@@ -240,18 +278,16 @@ shorts () {
     echo "OTHER SHORTS"
     echo "clean         rm *.url *.nzb *.sfv *.srr *.nfo"
     echo "cls           clear the terminal screen"
+    echo "del           send file to $HOME/.Trash (OSX only)"
     echo "grope         my special grep, 'grope -h' for options"
-    echo "grov          grope MOVIES directory"
     echo "h             bash history, because I too lazy to type 'history'"
     echo "latest        list the file with the most recent timestamp"
     echo "lgrope TEXT   lll | grope [TEXT]"
-    echo "mkcd   DIR     mkdir [DIR] && cd [DIR]"
-    echo "mov    FILE    rap the [FILE] to the MOVIES directory"
-    echo "rap    FILE    rsync -avh --progress [FILE]"
+    echo "mkcd   DIR    mkdir [DIR] && cd [DIR]"
+    echo "rap    FILE   rsync -avh --progress [FILE]"
     echo "shorts        list this help dialog"
     echo "tsearch TEXT  search the contents of all files in the current directory for the specified TEXT"
     echo "usage         display a nice disk usage thing"
-    echo "weather       display the weather"
     echo "webs          quick way to serve files in HTTP from the current directory"
 }
 
@@ -292,7 +328,7 @@ parse_svn_repository_root() {
 # Exports ------------------------------------------------------------
 export EDITOR=/usr/bin/vim
 
-# Command prompt configs --------------------------------------------- 
+# Command prompt configs ---------------------------------------------
 # \d = the date in "Weekday Month Date" (e.g. Fri Aug 26)
 # \D{format} = the format is passed to strftime(3)
 # \h = hostname up to first '.'
@@ -314,5 +350,12 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # PS1="\n[\u@\h]: \w\n$?>"
 
 
+
 # PATH Stuff
-PATH=$PATH:$HOME/src/dotfiles/bin # Add dotfiles bin stuff to PATH
+
+# add scripts
+PATH=$PATH:$HOME/src/dotfiles/bin
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+#export SDKMAN_DIR="$HOME/.sdkman"
+#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

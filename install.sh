@@ -16,12 +16,6 @@ if [ -f $homeDir/.bashrc ];
     rm $homeDir/.bashrc
 fi
 
-if [ -f $homeDir/.bash_profile ];
-  then
-    echo "deleting old .bash_profile"
-    rm $homeDir/.bash_profile
-fi
-
 if [ -f $homeDir/.vimrc ];
   then
     echo "deleting old .vimrc"
