@@ -6,12 +6,6 @@ Feel free to make suggestions.
 ## To Install
 
 * clone it
-* Update submodules:
-
- ```
- git submodule init && git submodule update
- ```
- 
 * Run the install script
 
  ```
