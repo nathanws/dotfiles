@@ -1,5 +1,6 @@
 # replaces all spaces in the filename with periods, and removes all parentheses and commas because they also suck.
 # BECAUSE I HATE SPACES IN FILE NAMES
+# not exactly optimized, but whatever
 file_name="$@"
 file_name=${file_name// /.}
 file_name=${file_name//[(]/}
