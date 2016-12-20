@@ -1,0 +1,19 @@
+"*":
+  core:
+    disabledPackages: [
+      "metrics"
+      "exception-reporting"
+      "language-clojure"
+      "language-csharp"
+      "language-coffee-script"
+      "language-perl"
+      "language-php"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-toml"
+    ]
+  "exception-reporting":
+    userId: "ad477324-f7fe-a0fb-79ad-e73a32ad5c07"
+  welcome:
+    showOnStartup: false
