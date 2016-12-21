@@ -1,8 +1,12 @@
+activate-power-mode@1.1.0
 atom-beautify@0.29.14
+color-picker@2.2.3
 file-icons@1.7.25
 git-plus@5.29.1
 language-bazel@0.3.2
 language-ignore@1.5.2
+language-viml@1.1.2
+project-manager@3.3.3
 tree-ignore@0.6.2
 vim-mode-plus@0.66.1
 

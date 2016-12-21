@@ -30,3 +30,16 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'atom-text-editor.vim-mode-plus.normal-mode':
+  'L': 'vim-mode-plus:move-to-last-character-of-line'
+  'H': 'vim-mode-plus:move-to-first-character-of-line'
+  ';': 'command-palette:toggle'
+  ', d': 'tree-view:toggle'
+  'ctrl-w': 'core:close'
+
+'.vim-mode-plus.insert-mode':
+  'j j': 'vim-mode-plus:activate-normal-mode'
+
+'.tree-view':
+  ',': 'tree-view:toggle'
