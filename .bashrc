@@ -119,16 +119,6 @@ export HISTTIMEFORMAT='%F %T '
 
 
 # Aliases ------------------------------------------------------------
-alias la='ls -A -G --color=auto'
-alias ll='ls -l -G --color=auto'
-alias lll='ls -lah -G --color=auto'
-alias ls='ls -G --color=auto'
-
-# list only files in the current directory
-alias lsf='lll -p | grep -v /'
-
-# list only directories in the current directory
-alias lsd='lll -p | grep /'
 
 # clear the terminal window
 alias cls='clear'
@@ -139,10 +129,20 @@ case "$(uname -s)" in
   # OSX
   Darwin)
    # Mainly used for OSX since rm permanently deletes
-   alias del='rm -target-directory=$HOME/.Trash/'
-   ;;
+    alias del='rm -target-directory=$HOME/.Trash/'
+    alias la='ls -A -G'
+    alias ll='ls -l -G'
+    alias lll='ls -lahG'
+    alias ls='ls -G'
+    alias l.='ls -dG .*'
+  ;;
 
   Linux)
+    alias la='ls -A -G --color=auto'
+    alias ll='ls -l -G --color=auto'
+    alias lll='ls -lah -G --color=auto'
+    alias ls='ls -G --color=auto'
+    alias l.='ls -d .* --color=auto'
   ;;
 
   # Windows
@@ -153,6 +153,12 @@ case "$(uname -s)" in
   *)
   ;;
 esac
+
+# list only files in the current directory
+alias lsf='ls -lahGp | grep -v /'
+
+# list only directories in the current directory
+alias lsd='ls -lahd */'
 
 # Display size (sorted) of the folders in current directory
 # alias folders='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
@@ -256,6 +262,9 @@ shorts () {
     echo "la     ls -A"
     echo "ll     ls -l"
     echo "lll    ls -lah"
+    echo "lsf    show only files in current directory"
+    echo "lsd    show only directories in current directory"
+    echo "l.     ls -d .* (show only hidden files)"
     echo ""
 
     echo "DIRECTORY NAVIGATION"
