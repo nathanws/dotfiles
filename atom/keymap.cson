@@ -43,3 +43,14 @@
 
 '.tree-view':
   ',': 'tree-view:toggle'
+
+
+#### Project Manager
+'.platform-darwin':
+  'ctrl-cmd-e': 'project-manager:edit-projects'
+
+'.platform-win32':
+  'alt-shift-e': 'project-manager:edit-projects'
+
+'.platform-linux':
+  'alt-shift-e': 'project-manager:edit-projects'
