@@ -4,6 +4,7 @@ autocomplete-clang@0.10.0
 autocomplete-java@1.2.5
 busy@0.7.0
 color-picker@2.2.5
+editorconfig@2.2.0
 file-icons@2.0.15
 git-plus@7.2.2
 language-bazel@0.3.2
