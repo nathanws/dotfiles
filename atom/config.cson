@@ -10,6 +10,11 @@
       enabled: true
     screenShake:
       maxIntensity: 5
+  "atom-beautify":
+    general:
+      _analyticsUserId: "365efe89-a9f8-4048-9982-85cc252cd6c5"
+  "autocomplete-clang":
+    includeNonDoxygenCommentsAsDocumentation: true
   core:
     disabledPackages: [
       "metrics"
@@ -24,8 +29,15 @@
       "language-ruby-on-rails"
       "language-toml"
     ]
+    telemetryConsent: "no"
+  editor: {}
   "exception-reporting":
     userId: "ad477324-f7fe-a0fb-79ad-e73a32ad5c07"
-  "tree-view": {}
+  "markdown-preview":
+    liveUpdate: false
+    useGitHubStyle: true
+  "tree-ignore": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
