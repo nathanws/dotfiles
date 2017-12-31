@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+jq '."'$1'"' $HOME/src/mine/dotfiles/bin/http-status-codes.json
