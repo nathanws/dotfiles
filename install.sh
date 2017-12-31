@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # location of this repository
-srcDir=$HOME/"src/dotfiles"
+srcDir=$HOME/"src/mine/dotfiles"
 
 # home directory, where the dotfiles are
 homeDir=$HOME

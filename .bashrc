@@ -294,6 +294,7 @@ shorts () {
     echo "lgrope TEXT   lll | grope [TEXT]"
     echo "mkcd   DIR    mkdir [DIR] && cd [DIR]"
     echo "rap    FILE   rsync -avh --progress [FILE]"
+    echo "ren    FILE   replaces all spaces in the filename with periods, removes all parentheses and commas"
     echo "shorts        list this help dialog"
     echo "tsearch TEXT  search the contents of all files in the current directory for the specified TEXT"
     echo "usage         display a nice disk usage thing"
@@ -359,12 +360,7 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # PS1="\n[\u@\h]: \w\n$?>"
 
 
-
 # PATH Stuff
 
 # add scripts
-PATH=$PATH:$HOME/src/dotfiles/bin
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="$HOME/.sdkman"
-#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+PATH=$PATH:$HOME/src/mine/dotfiles/bin
