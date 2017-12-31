@@ -1,0 +1,32 @@
+;[module/cpu]
+; shows info about cpu load
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+;interval = 0.5
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>
+format-padding = 3
+format-prefix = " "
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+;label = CPU %percentage%%
+
+; Only applies if <ramp-coreload> is used
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
