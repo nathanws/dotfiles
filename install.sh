@@ -25,5 +25,14 @@ if [ ! -L $homeDir/.vim ]; then
   ln -s $srcDir/vim/.vim $homeDir/.vim
 fi
 
+if [ ! -L $homeDir/.config ]; then
+  ln -s $srcDir/.config/dunst $homeDir/.config/dunst
+  ln -s $srcDir/.config/i3 $homeDir/.config/i3
+  ln -s $srcDir/.config/neofetch $homeDir/.config/neofetch
+  ln -s $srcDir/.config/polybar $homeDir/.config/polybar
+  ln -s $srcDir/.config/rofi $homeDir/.config/rofi
+  ln -s $srcDir/.config/rofi $homeDir/.config/rofi
+fi
+
 # reload stuff
 source $homeDir/.bashrc

@@ -1,0 +1,113 @@
+;[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Split the i3 workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces containing 'code' in the label
+; The labels must be unique as well (not sure why)
+; Default: false
+fuzzy-match = true
+
+; ws-icon-[0-9]+ = label;icon
+; NOTE: The label needs to match the name of the i3 workspace
+ws-icon-0 = term;
+ws-icon-1 = brow;
+ws-icon-2 = mail;
+ws-icon-3 = chat;
+ws-icon-4 = code;
+ws-icon-5 = audi;
+ws-icon-6 = vnc;
+ws-icon-default = 
+
+; This can be used to generate a ws-icon list:
+;#!/bin/bash
+;counter=0
+;i3-msg -t get_workspaces | tr ',' '\n' | sed -nr 's/"name":"([^"]+)"/\1/p' | while read -r name; do
+;  printf 'ws-icon-%i = "%s;<insert-icon-here>"\n' $((counter++)) $name
+;done
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+; focused = Active workspace on focused monitor
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused = %icon%
+label-focused-background = #88000000
+;label-focused-foreground =
+label-focused-underline = #ddd
+label-focused-padding = 4
+
+; unfocused = Inactive workspace on any monitor
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-unfocused = %icon%
+label-unfocused-padding = 4
+
+; visible = Active workspace on unfocused monitor
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-visible = %icon%
+label-visible-underline = #ddd
+label-visible-padding = 4
+
+; urgent = Workspace with urgency hint set
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+label-urgent = %icon%
+;label-urgent-foreground = #000000
+;label-urgent-background = #bd2c40
+label-urgent-padding = 4

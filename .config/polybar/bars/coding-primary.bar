@@ -1,0 +1,28 @@
+;[bar/coding]
+; Displays all the things I want to see on the primary display
+
+; Attempt to use this monitor for display. This environmental variable is
+; usually set when launching polybar
+monitor = ${env:MONITOR}
+
+; Modules are added to one of the available blocks
+;   modules-left
+;   modules-center
+;   modules-right
+modules-left = i3
+modules-center = mpd
+modules-right = cpu memory filesystem volume wlan date
+
+; Prefer fixed center position for the `modules-center` block
+; When false, the center position will be based on the size of the other blocks
+fixed-center = true
+
+; Fallback click handlers for the whole bar window. They can be replaced with anything.
+; `enable-scroll=false` should probably be disabled if using these click handlers.
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+;scroll-up = i3-msg workspace next_on_output
+;scroll-down = i3-msg workspace prev_on_output
+
+include-file = $HOME/.config/polybar/settings/default-bar.settings
+include-file = $HOME/.config/polybar/settings/default-tray.settings
