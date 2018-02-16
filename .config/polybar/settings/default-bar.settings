@@ -11,6 +11,9 @@
 ; Use this to detach the bar if your WM is locking its size/position
 override-redirect = true
 
+; Put the bar at the bottom of the screen
+bottom = false
+
 ; Dimension defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 width = 100%
 height = 35
@@ -99,7 +102,7 @@ dim-value = 1.0
 ; Currenty supported WM's:
 ;   bspwm
 ;   i3 (requires: `override-redirect = true`)
-wm-restack = i3
+;wm-restack = i3
 
 ; Enable support for inter-process messaging
 ;enable-ipc = false

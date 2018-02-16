@@ -5,6 +5,7 @@ type = internal/fs
 ; Mountpoints to display
 ; Should be defined in config file that includes this module
 ;mount-0 = /
+;mount-1 = /home/n/D
 
 ; Seconds to sleep between updates
 ; Default: 30

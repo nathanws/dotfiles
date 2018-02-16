@@ -360,7 +360,11 @@ export PS1="$cyan[\h]\W$green\$(parse_git_branch)\$(parse_hg_branch)$NORMAL $ "
 # PS1="\n[\u@\h]: \w\n$?>"
 
 
+load_ssh() {
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+}
 # PATH Stuff
 
 # add scripts
-PATH=$PATH:$HOME/src/mine/dotfiles/bin
+PATH=$PATH:$HOME/src/mine/dotfiles/bin:$HOME/D/SDK/flyway-5.0.6
