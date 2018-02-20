@@ -286,6 +286,12 @@ bindsym XF86AudioPrev exec mpc prev
 # take a screenshot
 bindsym $mod+F2 exec scrot '%Y-%m-%d_%H.%M.%S.%N_$wx$h.png' -e 'mv $f ~/D/shots'
 
+# Make currently focused window a scratchpad
+bindsym $mod+shift+u move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+u scratchpad show
+
 # execute the lock screen
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 
