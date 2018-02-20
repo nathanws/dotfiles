@@ -291,6 +291,7 @@ bindsym $mod+shift+u move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+u scratchpad show
+for_window [floating] border pixel 4
 
 # execute the lock screen
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
