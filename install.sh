@@ -31,7 +31,6 @@ if [ ! -L $homeDir/.config ]; then
   ln -s $srcDir/.config/neofetch $homeDir/.config/neofetch
   ln -s $srcDir/.config/polybar $homeDir/.config/polybar
   ln -s $srcDir/.config/rofi $homeDir/.config/rofi
-  ln -s $srcDir/.config/rofi $homeDir/.config/rofi
 fi
 
 # reload stuff
