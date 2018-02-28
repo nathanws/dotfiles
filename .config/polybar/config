@@ -35,6 +35,9 @@ include-file = $HOME/.config/polybar/modules/date.module
 ;[module/eth]
 ;include-file = $HOME/.config/polybar/modules/eth.module
 
+[module/github]
+include-file = $HOME/.config/polybar/modules/github.module
+
 [module/i3]
 include-file = $HOME/.config/polybar/modules/i3.module
 
@@ -57,7 +60,7 @@ include-file = $HOME/.config/polybar/modules/temperature.module
 include-file = $HOME/.config/polybar/modules/volume.module
 
 ;[module/wifimenu]
-i;nclude-file = $HOME/.config/polybar/modules/wifimenu.module
+;include-file = $HOME/.config/polybar/modules/wifimenu.module
 
 [module/wlan]
 include-file = $HOME/.config/polybar/modules/wlan.module

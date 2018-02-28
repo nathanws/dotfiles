@@ -11,7 +11,7 @@ monitor = ${env:MONITOR}
 ;   modules-right
 modules-left = i3
 modules-center = mpd
-modules-right = cpu memory filesystem volume wlan date
+modules-right = github cpu memory filesystem volume wlan date
 
 ; Prefer fixed center position for the `modules-center` block
 ; When false, the center position will be based on the size of the other blocks

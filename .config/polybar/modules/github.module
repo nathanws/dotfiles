@@ -1,0 +1,24 @@
+;[module/github]
+; must generate a GitHub personal access token where at least `notifications` is in the scope
+type = internal/github
+
+; Accessing an access token stored in file
+token = ${file:~/.github_poly_token}
+
+; Accessing an access token stored in an environment variable
+;token = ${env:GITHUB_ACCESS_TOKEN}
+
+; Whether empty notifications should be displayed or not
+empty-notifications = false
+
+; Number of seconds between requests
+interval = 60
+
+; Available tags:
+;   <label> (default)
+format =  <label>
+
+; Available tokens:
+;   %notifications% (default)
+; Default: Notifications: %notifications%
+label = %notifications%
